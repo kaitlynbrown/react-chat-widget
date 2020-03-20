@@ -14,7 +14,8 @@ const ConnectedWidget = props => (
       handleNewUserMessage={props.handleNewUserMessage}
       handleQuickButtonClicked={props.handleQuickButtonClicked}
       senderPlaceHolder={props.senderPlaceHolder}
-      profileAvatar={props.profileAvatar}
+      responseAvatar={props.responseAvatar}
+      clientAvatar={props.clientAvatar}
       showCloseButton={props.showCloseButton}
       fullScreenMode={props.fullScreenMode}
       badge={props.badge}
@@ -33,7 +34,8 @@ ConnectedWidget.propTypes = {
   handleNewUserMessage: PropTypes.func.isRequired,
   handleQuickButtonClicked: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
-  profileAvatar: PropTypes.node,
+  responseAvatar: PropTypes.node,
+  clientAvatar: PropTypes.node,
   showCloseButton: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,

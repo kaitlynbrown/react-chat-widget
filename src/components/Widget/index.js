@@ -51,7 +51,8 @@ class Widget extends Component {
         titleAvatar={this.props.titleAvatar}
         subtitle={this.props.subtitle}
         senderPlaceHolder={this.props.senderPlaceHolder}
-        profileAvatar={this.props.profileAvatar}
+        responseAvatar={this.props.responseAvatar}
+        clientAvatar={this.props.clientAvatar}
         showCloseButton={this.props.showCloseButton}
         fullScreenMode={this.props.fullScreenMode}
         badge={this.props.badge}
@@ -69,7 +70,8 @@ Widget.propTypes = {
   handleNewUserMessage: PropTypes.func.isRequired,
   handleQuickButtonClicked: PropTypes.func.isRequired,
   senderPlaceHolder: PropTypes.string,
-  profileAvatar: PropTypes.node,
+  responseAvatar: PropTypes.node,
+  clientAvatar: PropTypes.node,
   showCloseButton: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,

@@ -19,7 +19,8 @@ const WidgetLayout = props => (
         sendMessage={props.onSendMessage}
         senderPlaceHolder={props.senderPlaceHolder}
         onQuickButtonClicked={props.onQuickButtonClicked}
-        profileAvatar={props.profileAvatar}
+        responseAvatar={props.responseAvatar}
+        clientAvatar={props.clientAvatar}
         toggleChat={props.onToggleConversation}
         showChat={props.showChat}
         showCloseButton={props.showCloseButton}
@@ -45,7 +46,8 @@ WidgetLayout.propTypes = {
   showChat: PropTypes.bool,
   senderPlaceHolder: PropTypes.string,
   onQuickButtonClicked: PropTypes.func,
-  profileAvatar: PropTypes.node,
+  responseAvatar: PropTypes.node,
+  clientAvatar: PropTypes.clientAvatar,
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool,
   fullScreenMode: PropTypes.bool,

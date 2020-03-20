@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {connect} from 'react-redux';
 
+import {MESSAGE_SENDER} from '@constants';
 import {hideAvatar} from '@actions';
 import {scrollToBottom} from '@utils/messages';
 
@@ -37,7 +38,7 @@ class Messages extends Component {
   };
 
   render() {
-    const {messages, profileAvatar, typing} = this.props;
+    const {messages, responseAvatar, clientAvatar, typing} = this.props;
     return (
       <div
         id="messages"
@@ -46,8 +47,10 @@ class Messages extends Component {
       >
         {messages.map((message, index) => (
           <div className="rcw-message" key={index}>
-            {message.get('showAvatar') && profileAvatar}
+            {message.get('sender') === MESSAGE_SENDER.RESPONSE &&
+              responseAvatar}
             {this.getComponentToRender(message)}
+            {message.get('sender') === MESSAGE_SENDER.CLIENT && clientAvatar}
           </div>
         ))}
         <Loader typing={typing} />
@@ -58,7 +61,8 @@ class Messages extends Component {
 
 Messages.propTypes = {
   messages: ImmutablePropTypes.listOf(ImmutablePropTypes.map),
-  profileAvatar: PropTypes.node,
+  responseAvatar: PropTypes.node,
+  clientAvatar: PropTypes.node,
 };
 
 export default connect(store => ({

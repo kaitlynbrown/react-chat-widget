@@ -17,7 +17,8 @@ const Conversation = props =>
       titleAvatar={props.titleAvatar}
     />
     <Messages
-      profileAvatar={props.profileAvatar}
+      responseAvatar={props.responseAvatar}
+      clientAvatar={props.clientAvatar}
     />
     <QuickButtons onQuickButtonClicked={props.onQuickButtonClicked} />
     <Sender
@@ -34,7 +35,8 @@ Conversation.propTypes = {
   subtitle: PropTypes.string,
   sendMessage: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
-  profileAvatar: PropTypes.node,
+  responseAvatar: PropTypes.node,
+  clientAvatar: PropTypes.node,
   toggleChat: PropTypes.func,
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool,
