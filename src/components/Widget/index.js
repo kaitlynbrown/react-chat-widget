@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { toggleChat, addUserMessage } from '@actions';
+import {toggleChat} from '@actions';
 
 import WidgetLayout from './layout';
 
@@ -14,26 +14,32 @@ class Widget extends Component {
   }
 
   toggleConversation = () => {
+    const wasOpen = this.props.showChat;
     this.props.dispatch(toggleChat());
-  }
+    if (!wasOpen && this.props.onOpen) {
+      this.props.onOpen();
+    }
+    if (wasOpen && this.props.onClose) {
+      this.props.onClose();
+    }
+  };
 
-  handleMessageSubmit = (event) => {
+  handleMessageSubmit = event => {
     event.preventDefault();
     const userInput = event.target.message.value;
     if (userInput.trim()) {
-      this.props.dispatch(addUserMessage(userInput));
       this.props.handleNewUserMessage(userInput);
     }
     event.target.message.value = '';
-  }
+  };
 
   handleQuickButtonClicked = (event, value) => {
     event.preventDefault();
 
-    if(this.props.handleQuickButtonClicked) {
+    if (this.props.handleQuickButtonClicked) {
       this.props.handleQuickButtonClicked(value);
     }
-  }
+  };
 
   render() {
     return (
@@ -63,12 +69,16 @@ Widget.propTypes = {
   handleNewUserMessage: PropTypes.func.isRequired,
   handleQuickButtonClicked: PropTypes.func.isRequired,
   senderPlaceHolder: PropTypes.string,
-  profileAvatar: PropTypes.string,
+  profileAvatar: PropTypes.node,
   showCloseButton: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
   autofocus: PropTypes.bool,
-  customLauncher: PropTypes.func
+  customLauncher: PropTypes.func,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
-export default connect()(Widget);
+export default connect(store => ({showChat: store.behavior.get('showChat')}))(
+  Widget,
+);

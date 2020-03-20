@@ -34,7 +34,7 @@ Conversation.propTypes = {
   subtitle: PropTypes.string,
   sendMessage: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
-  profileAvatar: PropTypes.string,
+  profileAvatar: PropTypes.node,
   toggleChat: PropTypes.func,
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool,

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 
 import Widget from './components/Widget';
 import store from '../src/store/store';
 
-const ConnectedWidget = props =>
+const ConnectedWidget = props => (
   <Provider store={store}>
     <Widget
       title={props.title}
@@ -20,8 +20,11 @@ const ConnectedWidget = props =>
       badge={props.badge}
       autofocus={props.autofocus}
       customLauncher={props.launcher}
+      onOpen={props.onOpen}
+      onClose={props.onClose}
     />
-  </Provider>;
+  </Provider>
+);
 
 ConnectedWidget.propTypes = {
   title: PropTypes.string,
@@ -30,12 +33,14 @@ ConnectedWidget.propTypes = {
   handleNewUserMessage: PropTypes.func.isRequired,
   handleQuickButtonClicked: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
-  profileAvatar: PropTypes.string,
+  profileAvatar: PropTypes.node,
   showCloseButton: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
   autofocus: PropTypes.bool,
-  launcher: PropTypes.func
+  launcher: PropTypes.func,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 ConnectedWidget.defaultProps = {
@@ -45,7 +50,7 @@ ConnectedWidget.defaultProps = {
   showCloseButton: true,
   fullScreenMode: false,
   badge: 0,
-  autofocus: true
+  autofocus: true,
 };
 
 export default ConnectedWidget;
